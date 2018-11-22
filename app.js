@@ -1,5 +1,9 @@
+// INIT STORAGE OBJECT
+const storage = new Storage();
+const weatherLocation = storage.getLocationData();
+
 // INIT WEATHER OBJECT
-const weather = new Weather("New York");
+const weather = new Weather(weatherLocation.city);
 // INIT UI OBJECT
 const ui = new UI();
 
@@ -9,6 +13,9 @@ document.getElementById("w-change-btn").addEventListener("click", function(e) {
 
   // update the city
   weather.changeLocation(city);
+
+  //set location from local storage
+  storage.setLocationData(city);
 
   // get updated weather
   getWeather();
